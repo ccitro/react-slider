@@ -274,6 +274,7 @@
 
     _handleResize: function () {
       // setTimeout of 0 gives element enough time to have assumed its new size if it is being resized
+      clearTimeout(this.resizeTimeout);
       this.resizeTimeout = window.setTimeout(function() {
         var slider = this.refs.slider.getDOMNode();
         var handle = this.refs.handle0.getDOMNode();
@@ -290,7 +291,7 @@
           handleSize: handle[size],
           sliderStart: this.props.invert ? sliderMax : sliderMin
         });
-      }.bind(this), 0);
+      }.bind(this), 500);
     },
 
     // calculates the offset of a handle in pixels based on its value.
